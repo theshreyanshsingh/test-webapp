@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 // import store from "./redux/store";
 import ReduxProvider from "./redux/ReduxProvider";
 import { AuthContextProvider } from "@/app/auth/components/auth";
+import { AuthProvider } from "./utils/AuthProvider";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${inter.className} antialiased`}>
         <AuthContextProvider>
-          <ReduxProvider>{children}</ReduxProvider>
+          <AuthProvider>
+            <ReduxProvider>{children}</ReduxProvider>
+          </AuthProvider>
         </AuthContextProvider>
       </body>
     </html>
